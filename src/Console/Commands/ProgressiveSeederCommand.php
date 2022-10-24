@@ -30,6 +30,8 @@ class ProgressiveSeederCommand extends Command
                 if (! in_array($className, $alreadyRunClassNames)) {
                     $this->call("Database\Seeders\\" . $className);
                     $this->info('Seeder executed: ' . $className);
+                    
+                    $this->addClassToSeedersHistory($className);
                 }
             }
         }
