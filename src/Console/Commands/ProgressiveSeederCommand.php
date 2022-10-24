@@ -2,7 +2,7 @@
 
 namespace Elison\ProgressiveSeeder\Console\Commands;
 
-use App\Models\SeederHistory;
+use Elison\ProgressiveSeeder\Models\SeederHistory;
 use Illuminate\Console\Command;
 
 class ProgressiveSeederCommand extends Command
@@ -23,6 +23,8 @@ class ProgressiveSeederCommand extends Command
             $alreadyRunClassNames = SeederHistory::query()
                 ->pluck('class_name')
                 ->toArray();
+                
+            $alreadyRunClassNames[] = 'DatabaseSeeder';
 
             $allClassNames = $this->getAllClassNamesFromSeedersFolder();
 
